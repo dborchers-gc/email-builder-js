@@ -13,7 +13,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: '<Dein Service Connection Name>'   # Ersetze diesen Platzhalter
+    azureSubscription: 'AzDevOps-EmailBuilder-JS'   # Ersetze diesen Platzhalter
     appType: 'webApp'
-    WebAppName: '<Name deiner Azure Web App>'             # Ersetze diesen Platzhalter
+    WebAppName: 'email-builder-js'             # Ersetze diesen Platzhalter
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*'
