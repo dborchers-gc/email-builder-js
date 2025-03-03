@@ -1,0 +1,19 @@
+# Kein automatischer Branch-Trigger – der Start erfolgt über den Service Hook
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+
+# Optional: Falls du weitere Build- oder Testschritte brauchst, füge sie hier ein
+
+# Deployment in die Azure Web App
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: '<Dein Service Connection Name>'   # Ersetze diesen Platzhalter
+    appType: 'webApp'
+    WebAppName: '<Name deiner Azure Web App>'             # Ersetze diesen Platzhalter
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*'
